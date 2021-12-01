@@ -1,0 +1,7 @@
+matplotlib==3.3.4
+numpy==1.20.1
+pandas==1.2.4
+pandas_datareader==0.10.0
+streamlit==1.2.0
+yahoo_fin==0.8.9.1
+yfinance==0.1.63
