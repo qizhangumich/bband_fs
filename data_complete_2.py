@@ -61,11 +61,11 @@ st.title(name)
 
 
 st.subheader(info['longName']) 
-st.markdown('** Sector **: ' + info['sector'])
-st.markdown('** Industry **: ' + info['industry'])
-st.markdown('** Phone **: ' + info['phone'])
-st.markdown('** Address **: ' + info['address1'] + ', ' + info['city'] + ', ' + info['zip'] + ', '  +  info['country'])
-st.markdown('** Website **: ' + info['website'])
+#st.markdown('** Sector **: ' + info['sector'])
+#st.markdown('** Industry **: ' + info['industry'])
+#st.markdown('** Phone **: ' + info['phone'])
+#st.markdown('** Address **: ' + info['address1'] + ', ' + info['city'] + ', ' + info['zip'] + ', '  +  info['country'])
+#st.markdown('** Website **: ' + info['website'])
 st.info(info['longBusinessSummary'])
 
 
@@ -90,24 +90,25 @@ ax.fill_between(df.index, df['up_band'],df['low_band'],alpha=.2, linewidth=0)
 #plt.axis('tight')
 plt.tick_params(axis='x', labelsize=8,rotation=15) 
 
+try:
+  indicators = ['marketCap','trailingPE','priceToSalesTrailing12Months','totalRevenue','revenuePerShare','revenueGrowth','returnOnEquity',"grossMargins","profitMargins"]
 
-indicators = ['marketCap','trailingPE','priceToSalesTrailing12Months','totalRevenue','revenuePerShare','revenueGrowth','returnOnEquity',"grossMargins","profitMargins"]
+  col1, col2, col3 = st.columns(3)
+  col1.metric(indicators[0], "{:,.2f}".format(info[indicators[0]]/100000000))
+  col2.metric(indicators[1], "{:,.2f}".format(info[indicators[1]]))
+  col3.metric(indicators[2], "{:,.2f}".format(info[indicators[2]]))
 
-col1, col2, col3 = st.columns(3)
-col1.metric(indicators[0], "{:,.2f}".format(info[indicators[0]]/100000000))
-col2.metric(indicators[1], "{:,.2f}".format(info[indicators[1]]))
-col3.metric(indicators[2], "{:,.2f}".format(info[indicators[2]]))
+  col4, col5, col6 = st.columns(3)
+  col4.metric(indicators[3], "{:,.2f}".format(info[indicators[3]]/100000000))
+  col5.metric(indicators[4], "{:,.2f}".format(info[indicators[4]]))
+  col6.metric(indicators[5], "{:,.2f}".format(info[indicators[5]]))
 
-col4, col5, col6 = st.columns(3)
-col4.metric(indicators[3], "{:,.2f}".format(info[indicators[3]]/100000000))
-col5.metric(indicators[4], "{:,.2f}".format(info[indicators[4]]))
-col6.metric(indicators[5], "{:,.2f}".format(info[indicators[5]]))
-
-col7, col8, col9 = st.columns(3)
-col7.metric(indicators[6], "{:,.2f}".format(info[indicators[6]]))
-col8.metric(indicators[7], "{:,.2f}".format(info[indicators[7]]))
-col9.metric(indicators[8], "{:,.2f}".format(info[indicators[8]]))
-
+  col7, col8, col9 = st.columns(3)
+  col7.metric(indicators[6], "{:,.2f}".format(info[indicators[6]]))
+  col8.metric(indicators[7], "{:,.2f}".format(info[indicators[7]]))
+  col9.metric(indicators[8], "{:,.2f}".format(info[indicators[8]]))
+except:
+  continue
 st.pyplot(fig)
 
 
