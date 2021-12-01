@@ -108,7 +108,7 @@ try:
   col8.metric(indicators[7], "{:,.2f}".format(info[indicators[7]]))
   col9.metric(indicators[8], "{:,.2f}".format(info[indicators[8]]))
 except:
-
+  print("Something went wrong when opening the file")
 st.pyplot(fig)
 
 
